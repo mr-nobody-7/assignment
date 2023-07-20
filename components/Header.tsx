@@ -10,8 +10,9 @@ const Header = () => {
 
   return (
     <header className="w-full flex justify-between px-5 gap-3 items-center h-16 shadow-md fixed top-0 left-0 right-0 bg-white dark:bg-black z-20">
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3" data-testid="division">
         <Button
+          data-testid="sidebar-toggle"
           size="icon"
           variant="ghost"
           className="h-8 w-8"
@@ -27,7 +28,7 @@ const Header = () => {
           priority
         />
       </div>
-      <ModeToggle />
+      <ModeToggle data-testid="theme-toggle" />
     </header>
   );
 };
