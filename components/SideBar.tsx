@@ -98,7 +98,7 @@ const SideBar = () => {
                 value={page.name}
                 onClick={() => {
                   setSection(page.id);
-                  setShowSideBar(false)
+                  setShowSideBar(false);
                 }}
               >
                 {page.name}

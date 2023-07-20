@@ -1,21 +1,21 @@
-'use client'
-import { easeIn, motion } from "framer-motion"
+"use client";
+import { easeIn, motion } from "framer-motion";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 
 type DataCardProps = {
-  data : {
-    id : string,
-    title : string,
-    description : string,
-    date : string
-  }
-} 
+  data: {
+    id: string;
+    title: string;
+    description: string;
+    date: string;
+  };
+};
 
 // const easing = [0.6, -0.05, 0.01, 0.99]
 
@@ -42,24 +42,29 @@ const stagger = {
   },
 };
 
-const DataCard = (data:DataCardProps) => {
-  const {id, title, description, date } = data.data
+const DataCard = (data: DataCardProps) => {
+  const { id, title, description, date } = data.data;
   return (
-    <motion.div  whileHover={{scale : 1.05}} whileTap={{scale : 0.95}} >
-        <Card>
-          <CardHeader>
-          <motion.div ><CardTitle>{title}</CardTitle></motion.div>
-          </CardHeader>
-          <CardContent>
-          <motion.div ><p>{description}</p></motion.div>
-          </CardContent>
-          <CardHeader>
-          <motion.div ><CardDescription>{date}</CardDescription></motion.div>
-          </CardHeader>
-        </Card>
+    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+      <Card>
+        <CardHeader>
+          <motion.div>
+            <CardTitle>{title}</CardTitle>
+          </motion.div>
+        </CardHeader>
+        <CardContent>
+          <motion.div>
+            <p>{description}</p>
+          </motion.div>
+        </CardContent>
+        <CardHeader>
+          <motion.div>
+            <CardDescription>{date}</CardDescription>
+          </motion.div>
+        </CardHeader>
+      </Card>
     </motion.div>
-  )
-}
+  );
+};
 
-export default DataCard
-
+export default DataCard;
