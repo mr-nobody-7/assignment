@@ -1,4 +1,5 @@
 "use client";
+
 import EmployeeTable from "@/components/EmployeeTable";
 import HomeHeader from "@/components/HomeHeader";
 import { AnimatePresence, motion } from "framer-motion";
@@ -13,8 +14,8 @@ export default function Home() {
         exit={{ y: -10, opacity: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <HomeHeader />
-        <EmployeeTable />
+        <HomeHeader data-testid="homeheader" />
+        <EmployeeTable data-testid="table" />
       </motion.div>
     </AnimatePresence>
   );
