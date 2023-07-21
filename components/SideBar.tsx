@@ -76,6 +76,7 @@ const SideBar = () => {
         <div className="flex items-center justify-between py-2 px-4">
           <Image src="/logo_light.png" alt="logo" height={45} width={149} />
           <Button
+            data-testid="sidebar-toggle"
             size="icon"
             variant="ghost"
             className="h-8 w-8"
