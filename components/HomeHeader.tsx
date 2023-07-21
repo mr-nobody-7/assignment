@@ -1,16 +1,23 @@
-'use client'
+"use client";
 
-import {  motion, useAnimate, stagger } from "framer-motion"
-import { useEmployeesStatus } from "@/lib/store"
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
-import { useQuery } from "@tanstack/react-query"
-import axios from "axios"
-import { useEffect, useState } from "react"
+import { motion, useAnimate, stagger } from "framer-motion";
+import { useEmployeesStatus } from "@/lib/store";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 type FiltersListType = {
-  id : string
-  name : string
-}
+  id: string;
+  name: string;
+};
 
 // const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
 
@@ -49,20 +56,20 @@ type FiltersListType = {
 //   return scope;
 // }
 
-
-
 const HomeHeader = () => {
   // const [isOpen, setIsOpen] = useState(false);
   // const scope = useMenuAnimation(isOpen);
-  const {setEmployeesStatus, employeesStatus} = useEmployeesStatus()
+  const { setEmployeesStatus, employeesStatus } = useEmployeesStatus();
 
-  const {data: filtersList, isLoading} = useQuery<FiltersListType[]>({
-    queryFn: async ()=> {
-      const {data} = await axios.get("http://localhost:3000/employeeTableFiltersList")
-      return data
+  const { data: filtersList } = useQuery<FiltersListType[]>({
+    queryFn: async () => {
+      const { data } = await axios.get(
+        "http://localhost:3000/employeeTableFiltersList"
+      );
+      return data;
     },
     queryKey: ["categories-query", employeesStatus],
-  })
+  });
 
   return (
     <div className="w-full">
@@ -70,12 +77,12 @@ const HomeHeader = () => {
         <p className="text-lg">Employess</p>
         <Select onValueChange={(field) => setEmployeesStatus(field)}>
           <SelectTrigger className="w-[100px] capitalize">
-            <SelectValue placeholder="Filter by"/>
+            <SelectValue placeholder="Filter by" />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
               {filtersList?.map((filter) => {
-                return(
+                return (
                   <SelectItem
                     key={filter.id}
                     value={filter.name}
@@ -83,15 +90,14 @@ const HomeHeader = () => {
                   >
                     {filter.name}
                   </SelectItem>
-                )
+                );
               })}
             </SelectGroup>
           </SelectContent>
         </Select>
       </div>
     </div>
-  )
-}
+  );
+};
 
-
-export default HomeHeader
+export default HomeHeader;
